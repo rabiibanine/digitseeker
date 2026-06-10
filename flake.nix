@@ -17,6 +17,14 @@
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
           python313
+          (pkgs.python313.withPackages (
+            ps: with ps; [
+              torch
+              torchvision
+              numpy
+              matplotlib
+            ]
+          ))
         ];
 
         shellHook = ''
